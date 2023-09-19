@@ -19,9 +19,9 @@ spec:
       containers:
       - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
         name: guestbook-ui
-        livenessProbe:
+        readinessProbe:
           httpGet:
-            path: /bad-url
+            path: /
             port: 8080
         ports:
         - containerPort: 80
