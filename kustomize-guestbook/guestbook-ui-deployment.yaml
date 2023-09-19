@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: guestbook-ui
 spec:
-  replicas: 20
+  replicas: 100
   strategy:
     rollingUpdate:
       maxUnavailable: 1
@@ -18,13 +18,16 @@ spec:
         app: guestbook-ui
     spec:
       containers:
-      - image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+      - image: gcr.io/heptio-images/ks-guestbook-demo:0.1
         name: guestbook-ui
+        env:
+          - name: hello
+            value: world
         readinessProbe:
           httpGet:
             path: /
             port: 80
-          initialDelaySeconds: 2
+          initialDelaySeconds: 10
           periodSeconds: 5
         ports:
         - containerPort: 80
