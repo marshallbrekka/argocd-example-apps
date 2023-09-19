@@ -21,7 +21,7 @@ spec:
         name: guestbook-ui
         readinessProbe:
           httpGet:
-            path: /
+            path: /bad-url
             port: 80
         ports:
         - containerPort: 80
